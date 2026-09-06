@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "regions": ["gru1"],
+  "crons": [
+    {
+      "path": "/api/radar/revalidate",
+      "schedule": "0 9,15,21 * * *"
+    }
+  ]
+}

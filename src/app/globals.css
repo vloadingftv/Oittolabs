@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Target Advisor — Design tokens
+   Trocar as cores aqui propaga para o site inteiro.
+   ------------------------------------------------------------------ */
+@theme {
+  /* Tinta institucional (azul-petróleo profundo) */
+  --color-ink-950: #060d14;
+  --color-ink-900: #0a1622;
+  --color-ink-800: #0f2131;
+  --color-ink-700: #163149;
+  --color-ink-600: #1f4463;
+  --color-ink-500: #2c5c81;
+
+  /* Neutros quentes */
+  --color-sand-50: #fbfaf7;
+  --color-sand-100: #f4f2ed;
+  --color-sand-200: #e7e3da;
+  --color-sand-300: #d3cdc0;
+  --color-sand-400: #a9a294;
+  --color-sand-500: #7c766a;
+
+  /* Acento bronze — usado com parcimônia */
+  --color-brass-300: #e0bd88;
+  --color-brass-400: #cfa15f;
+  --color-brass-500: #b8863b;
+  --color-brass-600: #96692a;
+
+  /* Sinal */
+  --color-signal-500: #1f7a5c;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+
+  --breakpoint-3xl: 96rem;
+}
+
+@layer base {
+  :root {
+    --header-h: 72px;
+    color-scheme: light;
+  }
+
+  * {
+    border-color: var(--color-sand-200);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 24px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-sand-50);
+    color: var(--color-ink-900);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-ink-900);
+    color: var(--color-sand-50);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass-500);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Contêiner editorial padrão */
+  .shell {
+    width: 100%;
+    margin-inline: auto;
+    max-width: 82rem;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .shell { padding-inline: 2.5rem; }
+  }
+
+  /* Etiqueta de seção (eyebrow) */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-sand-500);
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: var(--color-brass-500);
+  }
+
+  /* Régua fina entre blocos */
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--color-sand-300),
+      transparent
+    );
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.3s ease;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+}
+
+@layer utilities {
+  .animate-rise {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .marquee-track {
+    animation: marquee 46s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+}
