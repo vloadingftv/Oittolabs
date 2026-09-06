@@ -74,7 +74,7 @@ export function VideoCard({
       </div>
 
       <div className="flex flex-1 flex-col pt-6">
-        <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-brass-500">
+        <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-brass-600">
           {video.series}
         </p>
         <h3
@@ -85,10 +85,10 @@ export function VideoCard({
         >
           {video.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-sand-500">
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
           {video.description}
         </p>
-        <div className="mt-5 flex items-center gap-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-400">
+        <div className="mt-5 flex items-center gap-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted">
           <time dateTime={video.date}>{formatDate(video.date)}</time>
           <span aria-hidden>·</span>
           <a

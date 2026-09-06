@@ -56,7 +56,7 @@ export function SectionHeading({
     >
       <div className={cx("max-w-2xl", align === "center" && "mx-auto")}>
         {eyebrow ? (
-          <p className={cx("eyebrow", tone === "dark" && "text-sand-400")}>
+          <p className={cx("eyebrow", tone === "dark" && "text-muted-invert")}>
             {eyebrow}
           </p>
         ) : null}
@@ -67,7 +67,7 @@ export function SectionHeading({
           <p
             className={cx(
               "mt-5 text-base leading-relaxed md:text-lg",
-              tone === "dark" ? "text-sand-300" : "text-sand-500",
+              tone === "dark" ? "text-sand-300" : "text-muted",
             )}
           >
             {lede}
@@ -195,11 +195,13 @@ export function Chip({
   tone = "neutral",
 }: {
   children: ReactNode;
-  tone?: "neutral" | "brass" | "dark";
+  /** `brass` é para fundo claro; `brassInvert` para fundo escuro. */
+  tone?: "neutral" | "brass" | "brassInvert" | "dark";
 }) {
   const tones = {
-    neutral: "border-sand-300 text-sand-500",
+    neutral: "border-sand-300 text-muted",
     brass: "border-brass-400/60 text-brass-600",
+    brassInvert: "border-brass-400/60 text-brass-500",
     dark: "border-sand-100/25 text-sand-300",
   } as const;
 

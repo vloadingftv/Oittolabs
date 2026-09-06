@@ -2,10 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 
 import { Logo } from "@/components/logo";
 import { primaryNav, site } from "@/content/site";
+import {
+  getIsScrolled,
+  getServerIsScrolled,
+  subscribeToScroll,
+} from "@/lib/browser-store";
 import { cx } from "@/lib/utils";
 
 /**
@@ -16,16 +21,23 @@ import { cx } from "@/lib/utils";
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => setOpen(false), [pathname]);
+  // Lido direto da rolagem do navegador, sem estado espelhado: no servidor e
+  // na hidratação vale `false`, que é o topo da página.
+  const scrolled = useSyncExternalStore(
+    subscribeToScroll,
+    getIsScrolled,
+    getServerIsScrolled,
+  );
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // Fecha o menu ao navegar. Ajuste durante a renderização — o padrão do React
+  // para reagir a uma prop que mudou; num efeito seria um quadro com o menu
+  // ainda aberto sobre a página nova.
+  const [routeAtOpen, setRouteAtOpen] = useState(pathname);
+  if (routeAtOpen !== pathname) {
+    setRouteAtOpen(pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -65,7 +77,7 @@ export function SiteHeader() {
                       solid
                         ? active
                           ? "text-ink-900"
-                          : "text-sand-500 hover:text-ink-900"
+                          : "text-muted hover:text-ink-900"
                         : active
                           ? "text-sand-50"
                           : "text-sand-300 hover:text-sand-50",
@@ -132,7 +144,7 @@ export function SiteHeader() {
                 <Link href={item.href} className="flex flex-col gap-1 py-4">
                   <span className="font-display text-xl">{item.label}</span>
                   {item.description ? (
-                    <span className="text-sm text-sand-500">
+                    <span className="text-sm text-muted">
                       {item.description}
                     </span>
                   ) : null}

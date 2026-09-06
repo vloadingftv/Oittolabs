@@ -44,7 +44,7 @@ export function ClientMark({
       <span
         className={cx(
           "mt-1.5 block text-[0.625rem] font-semibold uppercase tracking-[0.14em]",
-          tone === "dark" ? "text-sand-500" : "text-sand-400",
+          tone === "dark" ? "text-muted-invert" : "text-muted",
         )}
       >
         {client.sector}

@@ -24,12 +24,12 @@ export function PageHeader({
         }}
       />
       <div className="shell">
-        <p className="eyebrow text-sand-400">{eyebrow}</p>
+        <p className="eyebrow text-muted-invert">{eyebrow}</p>
         <h1 className="mt-6 max-w-4xl text-4xl leading-[1.06] text-sand-50 md:text-6xl">
           {title}
         </h1>
         {lede ? (
-          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-sand-400">
+          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-invert">
             {lede}
           </p>
         ) : null}

@@ -15,7 +15,7 @@ export function SiteFooter() {
         <div className="grid gap-14 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
             <Logo tone="light" />
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-sand-400">
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-invert">
               {site.description}
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
@@ -75,7 +75,7 @@ export function SiteFooter() {
                 {site.contact.phone}
               </a>
             </li>
-            <li className="pt-2 text-sand-400">
+            <li className="pt-2 text-muted-invert">
               {address.street}
               <br />
               {address.district} — {address.city}/{address.state}
@@ -97,7 +97,7 @@ export function SiteFooter() {
           </Link>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 text-xs text-sand-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-3 text-xs text-muted-invert sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.legalName}. Todos os direitos reservados.
           </p>
@@ -120,7 +120,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="font-sans text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-sand-500">
+      <h3 className="font-sans text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-muted-invert">
         {title}
       </h3>
       <ul className="mt-5 space-y-3 text-sm text-sand-300">{children}</ul>

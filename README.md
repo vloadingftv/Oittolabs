@@ -28,6 +28,7 @@ Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · deploy na Vercel.
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # build de produção
+npm run lint     # ESLint (o `next lint` foi removido no Next 16)
 npm run typecheck
 ```
 
@@ -123,6 +124,34 @@ src/
     └── utils.ts
 ```
 
+## Cor e acessibilidade
+
+O site passa sem violações no axe-core (WCAG 2.1 AA + best-practice) nas nove
+páginas. Duas regras mantêm assim:
+
+**Escolha o token de texto pelo fundo, não pela aparência.** Uma cor só não
+atende aos dois — foi a origem de 362 falhas de contraste na primeira versão.
+
+| Token | Onde usar | Contraste medido |
+| --- | --- | --- |
+| `text-muted` | texto secundário em fundo claro | 5,00:1 em `sand-50` · 4,67:1 em `sand-100` |
+| `text-muted-invert` | texto secundário em fundo escuro | 7,70:1 em `ink-950` |
+| `text-brass-600` | bronze como texto em fundo claro | 5,22:1 · 4,87:1 |
+| `text-brass-500` | bronze como texto em fundo escuro, e preenchimentos | 6,05:1 em `ink-950` |
+
+`sand-400` e `sand-500` continuam existindo, mas só para superfícies e bordas —
+não use como cor de texto.
+
+**Hierarquia de títulos sem pular nível.** Listagens cujos cartões são `h3`
+(Radar, Transações, Clientes) trazem um `h2` em `sr-only` antes da lista.
+
+Para reverificar depois de mexer em cor:
+
+```bash
+npm run build && npx next start -p 3100
+# em outra aba, com axe-core: ver o roteiro no histórico do projeto
+```
+
 ## Decisões técnicas que valem saber
 
 - **Tempo relativo nas manchetes** (`RelativeTime`): a página é cacheada, então o
@@ -136,3 +165,22 @@ src/
   interpretado como HTML, apenas como texto.
 - **Design tokens** concentrados em `src/app/globals.css`: as cores da marca
   entram em um lugar só.
+- **`useSyncExternalStore`** para relógio (tempo relativo) e rolagem (tom do
+  header). Ambos só existem no navegador; lê-los em `useEffect` e guardar em
+  estado gera renderização em cascata e um quadro com o valor errado.
+- **`Reveal` sem estado de React**: a opacidade é aplicada no próprio nó depois
+  de confirmar que há `IntersectionObserver`, com prazo de segurança de 2,5 s.
+  O HTML sai visível — sem JS o conteúdo aparece do mesmo jeito.
+
+## O que ainda não tem (decisão de vocês)
+
+- **Página de privacidade / LGPD.** O formulário coleta nome, e-mail, telefone e
+  empresa; o texto precisa ser redigido por quem responde juridicamente.
+- **Analytics.** Nenhum script de medição foi incluído. O caminho mais simples
+  na Vercel é o Vercel Analytics; Google Analytics ou Plausible também servem.
+- **CI.** Não há workflow rodando `lint`, `typecheck` e `build` a cada push.
+- **Rate limiting no formulário.** Hoje há honeypot e validação no servidor,
+  mas nada impede envios repetidos do mesmo IP.
+- **Content-Security-Policy.** Os cabeçalhos de segurança básicos estão em
+  `next.config.ts`; falta a CSP, que precisa ser escrita junto com a decisão
+  sobre analytics e embeds.

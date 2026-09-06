@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <section className="-mt-[var(--header-h)] bg-ink-950 pb-40 pt-[calc(var(--header-h)+8rem)] text-sand-100">
       <div className="shell">
-        <p className="eyebrow text-sand-400">Erro 404</p>
+        <p className="eyebrow text-muted-invert">Erro 404</p>
         <h1 className="mt-6 max-w-2xl text-4xl leading-tight text-sand-50 md:text-6xl">
           Esta página não existe
           <span className="italic text-brass-300"> — ou já mudou de lugar.</span>
@@ -26,7 +26,7 @@ export default function NotFound() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="link-underline text-sm text-sand-400 hover:text-sand-50"
+                className="link-underline text-sm text-muted-invert hover:text-sand-50"
               >
                 {item.label}
               </Link>

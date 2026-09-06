@@ -59,7 +59,7 @@ export default function AboutPage() {
                   <span className="block font-display text-4xl">
                     {stat.value}
                   </span>
-                  <span className="mt-2 block text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-400">
+                  <span className="mt-2 block text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted">
                     {stat.label}
                   </span>
                 </dd>
@@ -84,7 +84,7 @@ export default function AboutPage() {
                 className="scroll-mt-32 bg-sand-100 p-8 md:p-10"
               >
                 <h3 className="text-2xl">{service.name}</h3>
-                <p className="mt-4 leading-relaxed text-sand-500">
+                <p className="mt-4 leading-relaxed text-muted">
                   {service.summary}
                 </p>
                 <ul className="mt-7 space-y-2.5 text-sm text-ink-800">
@@ -114,11 +114,11 @@ export default function AboutPage() {
           <ol className="mt-14 grid gap-px bg-sand-200 md:grid-cols-4">
             {method.map((item) => (
               <li key={item.step} className="bg-sand-50 p-8">
-                <span className="font-display text-3xl text-brass-500">
+                <span className="font-display text-3xl text-brass-600">
                   {item.step}
                 </span>
                 <h3 className="mt-5 text-xl">{item.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-sand-500">
+                <p className="mt-3 text-sm leading-relaxed text-muted">
                   {item.text}
                 </p>
               </li>
@@ -147,7 +147,7 @@ export default function AboutPage() {
                 <p className="mt-1 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-brass-600">
                   {person.role}
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-sand-500">
+                <p className="mt-4 text-sm leading-relaxed text-muted">
                   {person.bio}
                 </p>
                 {person.linkedin ? (

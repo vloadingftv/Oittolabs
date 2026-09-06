@@ -13,7 +13,7 @@
   --color-ink-600: #1f4463;
   --color-ink-500: #2c5c81;
 
-  /* Neutros quentes */
+  /* Neutros quentes — superfícies e bordas */
   --color-sand-50: #fbfaf7;
   --color-sand-100: #f4f2ed;
   --color-sand-200: #e7e3da;
@@ -21,11 +21,25 @@
   --color-sand-400: #a9a294;
   --color-sand-500: #7c766a;
 
-  /* Acento bronze — usado com parcimônia */
+  /*
+   * Texto secundário. Uma cor só não serve aos dois fundos: escolha pelo fundo
+   * em que o texto está, não pela aparência. Os números são a razão de
+   * contraste WCAG medida (mínimo 4.5:1 para texto normal).
+   *   --color-muted        em sand-50 5.00:1 · em sand-100 4.67:1
+   *   --color-muted-invert em ink-950 7.70:1
+   */
+  --color-muted: #726c5e;
+  --color-muted-invert: #a9a294;
+
+  /*
+   * Acento bronze. brass-500 é para fundo ESCURO (6.05:1) e para preenchimentos
+   * (botão, régua, marcador). brass-600 é o bronze legível em fundo CLARO
+   * (5.22:1 em sand-50, 4.87:1 em sand-100).
+   */
   --color-brass-300: #e0bd88;
   --color-brass-400: #cfa15f;
   --color-brass-500: #b8863b;
-  --color-brass-600: #96692a;
+  --color-brass-600: #8a6224;
 
   /* Sinal */
   --color-signal-500: #1f7a5c;
@@ -116,7 +130,7 @@
     font-weight: 600;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-sand-500);
+    color: var(--color-muted);
   }
   .eyebrow::before {
     content: "";

@@ -50,7 +50,7 @@ export default function ContentPage() {
         }
         lede="Cada vídeo publicado ganha aqui uma página com título, resumo e série. O LinkedIn e o Instagram apontam para cá, o Google indexa e o canal para de viver só de quem já conhece a Target."
         meta={
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-500">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted-invert">
             <span>{videos.length} vídeos</span>
             <span aria-hidden>·</span>
             <span>{series.length} séries</span>
@@ -65,16 +65,16 @@ export default function ContentPage() {
               <div className="flex flex-col gap-3 border-b border-sand-200 pb-8 md:flex-row md:items-end md:justify-between">
                 <div className="max-w-xl">
                   <h2 className="text-3xl">{group.name}</h2>
-                  <p className="mt-3 text-sand-500">{group.description}</p>
+                  <p className="mt-3 text-muted">{group.description}</p>
                 </div>
-                <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-400">
+                <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted">
                   {group.items.length}{" "}
                   {group.items.length === 1 ? "episódio" : "episódios"}
                 </span>
               </div>
 
               {group.items.length === 0 ? (
-                <p className="py-12 text-sand-500">
+                <p className="py-12 text-muted">
                   Novos episódios em produção.
                 </p>
               ) : (
@@ -107,7 +107,7 @@ export default function ContentPage() {
                   {channel.role}
                 </p>
                 <h3 className="mt-4 text-2xl">{channel.name}</h3>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-sand-500">
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">
                   {channel.text}
                 </p>
                 <a

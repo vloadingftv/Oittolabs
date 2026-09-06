@@ -51,13 +51,13 @@ export function RadarBrowser({
       <div className="flex flex-col gap-5 border-y border-sand-200 py-6 lg:flex-row lg:items-center lg:justify-between">
         <label className="relative flex-1 lg:max-w-sm">
           <span className="sr-only">Buscar manchete</span>
-          <SearchIcon className="pointer-events-none absolute left-0 top-1/2 size-4 -translate-y-1/2 text-sand-400" />
+          <SearchIcon className="pointer-events-none absolute left-0 top-1/2 size-4 -translate-y-1/2 text-muted" />
           <input
             type="search"
             value={query}
             onChange={(e) => reset(setQuery)(e.target.value)}
             placeholder="Buscar empresa, setor ou termo"
-            className="w-full border-0 border-b border-sand-300 bg-transparent py-2.5 pl-7 text-sm outline-none placeholder:text-sand-400 focus:border-ink-900"
+            className="w-full border-0 border-b border-sand-300 bg-transparent py-2.5 pl-7 text-sm outline-none placeholder:text-muted focus:border-ink-900"
           />
         </label>
 
@@ -77,14 +77,16 @@ export function RadarBrowser({
         </div>
       </div>
 
-      <p className="pt-6 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-400">
+      <p className="pt-6 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
         {filtered.length} {filtered.length === 1 ? "manchete" : "manchetes"}
         {sector !== "Todos" ? ` · ${sector}` : ""}
         {source !== "Todas" ? ` · ${source}` : ""}
       </p>
 
+      <h2 className="sr-only">Manchetes</h2>
+
       {shown.length === 0 ? (
-        <p className="border-t border-sand-200 py-16 text-center text-sand-500">
+        <p className="border-t border-sand-200 py-16 text-center text-muted">
           Nenhuma manchete corresponde a esses filtros.
         </p>
       ) : (
@@ -123,7 +125,7 @@ function Select({
 }) {
   return (
     <label className="inline-flex items-center gap-2">
-      <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-400">
+      <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
         {label}
       </span>
       <select

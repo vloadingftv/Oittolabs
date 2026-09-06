@@ -43,7 +43,7 @@ export function ClientWall({
                   "text-sm transition-colors",
                   active
                     ? "font-semibold text-ink-900 underline decoration-brass-500 decoration-2 underline-offset-[6px]"
-                    : "text-sand-500 hover:text-ink-900",
+                    : "text-muted hover:text-ink-900",
                 )}
               >
                 {option}
@@ -53,9 +53,11 @@ export function ClientWall({
         })}
       </ul>
 
-      <p className="pt-8 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-400">
+      <p className="pt-8 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
         {filtered.length} {filtered.length === 1 ? "empresa" : "empresas"}
       </p>
+
+      <h2 className="sr-only">Empresas atendidas</h2>
 
       <ul className="mt-6 grid grid-cols-2 gap-px bg-sand-200 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {filtered.map((client) => (

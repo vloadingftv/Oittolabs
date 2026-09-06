@@ -56,8 +56,8 @@ export function shortDate(iso: string) {
  * HTML de uma página cacheada — use <RelativeTime>, que só troca o texto
  * depois da hidratação.
  */
-export function timeAgo(iso: string) {
-  const diff = Date.now() - new Date(iso).valueOf();
+export function timeAgo(iso: string, now: number = Date.now()) {
+  const diff = now - new Date(iso).valueOf();
   const minutes = Math.round(diff / 60000);
   if (minutes < 1) return "agora";
   if (minutes < 60) return `há ${minutes} min`;

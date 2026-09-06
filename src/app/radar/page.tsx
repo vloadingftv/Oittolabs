@@ -45,7 +45,7 @@ export default async function RadarPage() {
         }
         lede="Compilamos as manchetes de fusões e aquisições dos principais veículos do país. Nada é hospedado aqui: você clica e vai direto para a matéria original, no site de quem publicou."
         meta={
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-500">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted-invert">
             <span>{items.length} manchetes</span>
             <span aria-hidden>·</span>
             <span>{sources.length} fontes monitoradas</span>
@@ -68,7 +68,7 @@ export default async function RadarPage() {
 
           <div className="mt-20 border-t border-sand-200 pt-10">
             <h2 className="text-2xl">Fontes monitoradas</h2>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-sand-500">
+            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
               O Radar lê os feeds públicos abaixo, filtra o que é pauta de
               fusões, aquisições e capitalização, remove manchetes repetidas e
               ordena por data. Os direitos de cada matéria são do veículo de

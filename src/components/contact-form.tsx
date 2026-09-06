@@ -15,7 +15,7 @@ export function ContactForm() {
     return (
       <div className="border border-signal-500/40 bg-signal-500/5 p-10">
         <p className="font-display text-2xl">Mensagem enviada.</p>
-        <p className="mt-3 leading-relaxed text-sand-500">
+        <p className="mt-3 leading-relaxed text-muted">
           {state.message ??
             "Um sócio responde em até um dia útil — sempre sob sigilo."}
         </p>
@@ -57,7 +57,7 @@ export function ContactForm() {
       <Field name="subject" label="Assunto" />
 
       <label className="block">
-        <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-400">
+        <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
           Como podemos ajudar
         </span>
         <textarea
@@ -66,7 +66,7 @@ export function ContactForm() {
           required
           aria-invalid={Boolean(state.fields?.message)}
           className={cx(
-            "mt-2 w-full resize-y border-0 border-b bg-transparent py-3 text-base outline-none transition-colors placeholder:text-sand-400",
+            "mt-2 w-full resize-y border-0 border-b bg-transparent py-3 text-base outline-none transition-colors placeholder:text-muted",
             state.fields?.message
               ? "border-brass-500"
               : "border-sand-300 focus:border-ink-900",
@@ -88,7 +88,7 @@ export function ContactForm() {
         </label>
       </div>
 
-      <p className="text-xs leading-relaxed text-sand-500">
+      <p className="text-xs leading-relaxed text-muted">
         Suas informações são tratadas com confidencialidade e usadas apenas para
         responder a este contato.
       </p>
@@ -128,9 +128,9 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-400">
+      <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
         {label}
-        {required ? <span className="text-brass-500"> *</span> : null}
+        {required ? <span className="text-brass-600"> *</span> : null}
       </span>
       <input
         name={name}

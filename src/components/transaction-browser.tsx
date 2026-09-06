@@ -52,13 +52,15 @@ export function TransactionBrowser({
         />
       </div>
 
-      <p className="pt-8 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-400">
+      <p className="pt-8 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
         {filtered.length}{" "}
         {filtered.length === 1 ? "transação" : "transações"}
       </p>
 
+      <h2 className="sr-only">Transações</h2>
+
       {filtered.length === 0 ? (
-        <p className="py-20 text-center text-sand-500">
+        <p className="py-20 text-center text-muted">
           Nenhuma transação com esses filtros.
         </p>
       ) : (
@@ -87,7 +89,7 @@ function FilterRow({
 }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:gap-6">
-      <span className="w-20 shrink-0 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-400">
+      <span className="w-20 shrink-0 text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
         {label}
       </span>
       <ul className="flex flex-wrap gap-x-5 gap-y-2">
@@ -103,7 +105,7 @@ function FilterRow({
                   "text-sm transition-colors",
                   active
                     ? "font-semibold text-ink-900 underline decoration-brass-500 decoration-2 underline-offset-[6px]"
-                    : "text-sand-500 hover:text-ink-900",
+                    : "text-muted hover:text-ink-900",
                 )}
               >
                 {option}

@@ -1,17 +1,22 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
-
-import { cx } from "@/lib/utils";
+import { useEffect, useRef, type ReactNode } from "react";
 
 /**
  * Entrada suave ao rolar.
  *
- * Regra de segurança: o conteúdo NUNCA pode ficar escondido por causa da
- * animação. Por isso (a) o estado inicial é visível — só escondemos depois de
- * confirmar que há IntersectionObserver, e (b) há um timeout que revela de
- * qualquer jeito caso o observer nunca dispare (aba em segundo plano, captura
- * de tela, leitor de conteúdo, impressão).
+ * Duas regras de segurança:
+ *
+ * 1. O conteúdo NUNCA pode ficar escondido por causa da animação. O HTML sai
+ *    visível; só escondemos depois de confirmar, no navegador, que existe
+ *    IntersectionObserver. Sem JS, sem observer, ou em impressão e leitores,
+ *    o conteúdo simplesmente aparece.
+ * 2. Há um prazo de segurança: se o observer não disparar em 2,5 s (aba em
+ *    segundo plano, captura de tela), revelamos assim mesmo.
+ *
+ * A visibilidade é aplicada direto no nó, sem estado de React: escondê-la via
+ * estado exigiria um setState dentro do efeito, o que provoca renderização em
+ * cascata e ainda deixaria um quadro visível antes de sumir.
  */
 export function Reveal({
   children,
@@ -25,56 +30,45 @@ export function Reveal({
   as?: "div" | "li" | "article" | "section";
 }) {
   const ref = useRef<HTMLElement | null>(null);
-  const [state, setState] = useState<"idle" | "armed" | "shown">("idle");
 
   useEffect(() => {
     const node = ref.current;
-    if (!node) return;
+    if (!node || typeof IntersectionObserver === "undefined") return;
 
-    if (typeof IntersectionObserver === "undefined") {
-      setState("shown");
-      return;
-    }
+    node.style.opacity = "0";
 
-    setState("armed");
-
-    const show = () => setState("shown");
+    const reveal = () => {
+      node.style.opacity = "";
+      if (delay) node.style.animationDelay = `${delay}ms`;
+      node.classList.add("animate-rise");
+      stop();
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          show();
-          observer.disconnect();
-        }
+        if (entry.isIntersecting) reveal();
       },
       // Margem generosa: revela um pouco antes de entrar na tela.
       { rootMargin: "160px 0px -5% 0px", threshold: 0 },
     );
 
-    observer.observe(node);
+    const timer = window.setTimeout(reveal, 2500);
 
-    // Rede de proteção — se nada disparar em 2,5 s, mostramos assim mesmo.
-    const timer = window.setTimeout(() => {
-      show();
-      observer.disconnect();
-    }, 2500);
-
-    return () => {
+    function stop() {
       observer.disconnect();
       window.clearTimeout(timer);
+    }
+
+    observer.observe(node);
+
+    return () => {
+      stop();
+      node.style.opacity = "";
     };
-  }, []);
+  }, [delay]);
 
   return (
-    <Tag
-      ref={ref as never}
-      style={state === "shown" && delay ? { animationDelay: `${delay}ms` } : undefined}
-      className={cx(
-        className,
-        state === "armed" && "opacity-0",
-        state === "shown" && "animate-rise",
-      )}
-    >
+    <Tag ref={ref as never} className={className}>
       {children}
     </Tag>
   );

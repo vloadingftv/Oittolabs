@@ -47,7 +47,7 @@ export function PressCard({
           <p
             className={cx(
               "mt-3 text-sm leading-relaxed",
-              tone === "dark" ? "text-sand-400" : "text-sand-500",
+              tone === "dark" ? "text-muted-invert" : "text-muted",
             )}
           >
             {item.excerpt}
@@ -59,8 +59,8 @@ export function PressCard({
         className={cx(
           "flex items-center justify-between border-t pt-4 text-[0.6875rem] font-semibold uppercase tracking-[0.12em]",
           tone === "dark"
-            ? "border-sand-100/12 text-sand-500"
-            : "border-sand-200 text-sand-400",
+            ? "border-sand-100/12 text-muted-invert"
+            : "border-sand-200 text-muted",
         )}
       >
         <time dateTime={item.date}>{formatDate(item.date)}</time>

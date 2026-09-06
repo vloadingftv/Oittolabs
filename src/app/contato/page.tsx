@@ -34,7 +34,7 @@ export default function ContactPage() {
 
           <aside className="space-y-10">
             <div>
-              <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-sand-400">
+              <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-muted">
                 Canais diretos
               </h2>
               <ul className="mt-5 space-y-3 text-lg">
@@ -68,7 +68,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-sand-400">
+              <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-muted">
                 Escritório
               </h2>
               <address className="mt-5 not-italic leading-relaxed text-ink-800">
@@ -81,7 +81,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-sand-400">
+              <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-muted">
                 Redes
               </h2>
               <ul className="mt-5 space-y-3">
@@ -104,7 +104,7 @@ export default function ContactPage() {
               <p className="font-display text-xl leading-snug">
                 Antes de conversar, dá para se preparar.
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-sand-500">
+              <p className="mt-3 text-sm leading-relaxed text-muted">
                 Os vídeos da série <em>Target Explica</em> cobrem valuation,
                 due diligence e o que um comprador olha primeiro.
               </p>

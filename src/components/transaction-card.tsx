@@ -41,7 +41,7 @@ export function TransactionCard({
         <p
           className={cx(
             "mt-3 text-sm leading-relaxed",
-            tone === "dark" ? "text-sand-400" : "text-sand-500",
+            tone === "dark" ? "text-muted-invert" : "text-muted",
           )}
         >
           {transaction.headline}
@@ -52,12 +52,12 @@ export function TransactionCard({
         className={cx(
           "flex items-center justify-between border-t pt-5 text-[0.75rem] font-semibold uppercase tracking-[0.12em]",
           tone === "dark"
-            ? "border-sand-100/12 text-sand-400"
-            : "border-sand-200 text-sand-400",
+            ? "border-sand-100/12 text-muted-invert"
+            : "border-sand-200 text-muted",
         )}
       >
         <span>{transaction.year}</span>
-        <span className="inline-flex items-center gap-2 text-brass-500">
+        <span className="inline-flex items-center gap-2 text-brass-600">
           Tombstone
           <Arrow className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
         </span>

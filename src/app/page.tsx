@@ -50,7 +50,7 @@ function Hero() {
 
       <div className="shell relative z-10 py-24">
         <div className="max-w-3xl">
-          <p className="eyebrow animate-rise text-sand-400">
+          <p className="eyebrow animate-rise text-muted-invert">
             Fusões e aquisições · Middle market brasileiro
           </p>
 
@@ -86,7 +86,7 @@ function Hero() {
                 <span className="block font-display text-4xl text-sand-50">
                   {stat.value}
                 </span>
-                <span className="mt-2 block text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-400">
+                <span className="mt-2 block text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted-invert">
                   {stat.label}
                 </span>
               </dd>
@@ -107,7 +107,7 @@ function ClientStrip() {
       <div className="shell">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
           <p className="eyebrow">Empresas que confiaram na Target</p>
-          <ArrowLink href="/clientes" className="text-sand-500 hover:text-ink-900">
+          <ArrowLink href="/clientes" className="text-muted hover:text-ink-900">
             Ver todos os {clients.length} clientes
           </ArrowLink>
         </div>
@@ -121,7 +121,7 @@ function ClientStrip() {
               aria-hidden={index >= highlightedClients.length}
               className="shrink-0"
             >
-              <span className="font-display text-xl whitespace-nowrap text-ink-800/55 transition-colors duration-300 hover:text-ink-900">
+              <span className="font-display text-xl whitespace-nowrap text-muted transition-colors duration-300 hover:text-ink-900">
                 {client.name}
               </span>
             </li>
@@ -167,7 +167,7 @@ async function RadarSection({
           ))}
         </div>
 
-        <p className="mt-8 text-xs text-sand-500">
+        <p className="mt-8 text-xs text-muted-invert">
           Atualizado automaticamente a cada 30 minutos ·{" "}
           {formatDateTime(updatedAt)}
         </p>
@@ -218,12 +218,12 @@ function ServicesSection() {
           <ol className="mt-12 space-y-8">
             {method.map((item) => (
               <li key={item.step} className="flex gap-6">
-                <span className="font-display text-2xl text-brass-500">
+                <span className="font-display text-2xl text-brass-600">
                   {item.step}
                 </span>
                 <div>
                   <h3 className="text-xl">{item.name}</h3>
-                  <p className="mt-2 max-w-md text-sm leading-relaxed text-sand-500">
+                  <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
                     {item.text}
                   </p>
                 </div>
@@ -236,7 +236,7 @@ function ServicesSection() {
           {services.map((service) => (
             <li key={service.slug} className="bg-sand-100 p-8">
               <h3 className="text-2xl">{service.name}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-sand-500">
+              <p className="mt-4 text-sm leading-relaxed text-muted">
                 {service.summary}
               </p>
               <ul className="mt-6 space-y-2 text-sm text-ink-800">
@@ -304,7 +304,7 @@ function VideoSection() {
         </div>
 
         <div className="mt-16 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-sand-300 pt-8">
-          <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-sand-500">
+          <span className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-muted">
             Acompanhe a Target
           </span>
           {Object.entries(site.social).map(([key, url]) => (
@@ -329,12 +329,12 @@ function ClosingCta() {
     <section className="bg-ink-950 py-24 text-sand-100 md:py-32">
       <div className="shell grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-end">
         <div>
-          <p className="eyebrow text-sand-400">Conversa confidencial</p>
+          <p className="eyebrow text-muted-invert">Conversa confidencial</p>
           <h2 className="mt-6 max-w-2xl text-4xl leading-[1.08] text-sand-50 md:text-5xl">
             Não precisa estar decidido a vender
             <span className="italic text-brass-300"> para conversar.</span>
           </h2>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-sand-400">
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-muted-invert">
             A primeira conversa é sempre sob sigilo e sem compromisso. Se a hora
             não for agora, dizemos isso — e apontamos o que preparar até lá.
           </p>
@@ -346,7 +346,7 @@ function ClosingCta() {
           </ButtonLink>
           <Link
             href={`mailto:${site.contact.email}`}
-            className="text-center text-sm text-sand-400 hover:text-sand-100"
+            className="text-center text-sm text-muted-invert hover:text-sand-100"
           >
             {site.contact.email}
           </Link>

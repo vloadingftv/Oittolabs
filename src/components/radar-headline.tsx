@@ -35,7 +35,7 @@ export function RadarHeadline({
         iso={item.publishedAt}
         className={cx(
           "hidden w-24 shrink-0 pt-1 text-[0.6875rem] font-semibold uppercase tracking-[0.1em] tabular-nums sm:block",
-          tone === "dark" ? "text-sand-500" : "text-sand-400",
+          tone === "dark" ? "text-muted-invert" : "text-muted",
         )}
       />
 
@@ -54,7 +54,7 @@ export function RadarHeadline({
           <p
             className={cx(
               "mt-2 line-clamp-2 text-sm leading-relaxed",
-              tone === "dark" ? "text-sand-400" : "text-sand-500",
+              tone === "dark" ? "text-muted-invert" : "text-muted",
             )}
           >
             {item.excerpt}
@@ -64,7 +64,7 @@ export function RadarHeadline({
         <div
           className={cx(
             "mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.6875rem] font-semibold uppercase tracking-[0.1em]",
-            tone === "dark" ? "text-sand-500" : "text-sand-400",
+            tone === "dark" ? "text-muted-invert" : "text-muted",
           )}
         >
           <span className={tone === "dark" ? "text-sand-300" : "text-ink-700"}>
@@ -79,7 +79,9 @@ export function RadarHeadline({
           {item.paywall ? (
             <>
               <span aria-hidden>·</span>
-              <span className="text-brass-500">Assinantes</span>
+              <span className={tone === "dark" ? "text-brass-400" : "text-brass-600"}>
+                Assinantes
+              </span>
             </>
           ) : null}
         </div>
@@ -88,7 +90,7 @@ export function RadarHeadline({
       <ExternalIcon
         className={cx(
           "mt-1.5 size-3.5 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100",
-          tone === "dark" ? "text-brass-400" : "text-brass-500",
+          tone === "dark" ? "text-brass-400" : "text-brass-600",
         )}
       />
     </a>

@@ -26,7 +26,7 @@ export default function ClientsPage() {
         }
         lede="Indústria, saúde, tecnologia, varejo, infraestrutura. Empresas de portes e regiões diferentes, com um ponto em comum: o dono só faz isso uma vez."
         meta={
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-500">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted-invert">
             <span>{clients.length} empresas</span>
             <span aria-hidden>·</span>
             <span>{clientSectors.length} setores</span>

@@ -62,7 +62,7 @@ export default async function TransactionPage({
       {/* Tombstone — a "lápide" da operação */}
       <section className="-mt-[var(--header-h)] bg-ink-950 pb-20 pt-[calc(var(--header-h)+5rem)] text-sand-100 md:pb-24 md:pt-[calc(var(--header-h)+8rem)]">
         <div className="shell">
-          <ArrowLink href="/transacoes" className="text-sand-500">
+          <ArrowLink href="/transacoes" className="text-muted-invert">
             Todas as transações
           </ArrowLink>
 
@@ -70,7 +70,7 @@ export default async function TransactionPage({
             <div className="mx-auto max-w-2xl text-center">
               <div className="flex flex-wrap justify-center gap-2">
                 <Chip tone="dark">{transaction.sector}</Chip>
-                <Chip tone="brass">{transaction.role}</Chip>
+                <Chip tone="brassInvert">{transaction.role}</Chip>
                 <Chip tone="dark">{transaction.year}</Chip>
               </div>
 
@@ -78,7 +78,7 @@ export default async function TransactionPage({
                 {transaction.company}
               </h1>
 
-              <p className="mt-6 text-sm leading-relaxed text-sand-400">
+              <p className="mt-6 text-sm leading-relaxed text-muted-invert">
                 {transaction.companyDescription}
               </p>
 
@@ -91,14 +91,14 @@ export default async function TransactionPage({
                 {transaction.headline}
               </p>
 
-              <p className="mt-8 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-sand-500">
+              <p className="mt-8 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-muted-invert">
                 Contraparte
               </p>
               <p className="mt-2 text-lg text-sand-200">
                 {transaction.counterparty}
               </p>
 
-              <p className="mt-12 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-sand-500">
+              <p className="mt-12 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-muted-invert">
                 A Target Advisor atuou como assessora financeira exclusiva
               </p>
             </div>
@@ -130,7 +130,7 @@ export default async function TransactionPage({
           </div>
 
           <aside>
-            <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-sand-400">
+            <h2 className="text-[0.6875rem] font-sans font-semibold uppercase tracking-[0.16em] text-muted">
               Ficha da transação
             </h2>
             <dl className="mt-6 divide-y divide-sand-200 border-y border-sand-200">
@@ -149,7 +149,7 @@ export default async function TransactionPage({
               <p className="font-display text-xl leading-snug">
                 Sua empresa é do setor de {transaction.sector.toLowerCase()}?
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-sand-500">
+              <p className="mt-3 text-sm leading-relaxed text-muted">
                 Conversamos sob sigilo sobre o momento de mercado e o que um
                 comprador olharia no seu negócio hoje.
               </p>
@@ -168,7 +168,7 @@ export default async function TransactionPage({
               <h2 className="text-2xl">Outras operações</h2>
               <Link
                 href="/transacoes"
-                className="link-underline text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-sand-500"
+                className="link-underline text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-muted"
               >
                 Ver todas
               </Link>
@@ -201,7 +201,7 @@ export default async function TransactionPage({
 function Fact({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-1 py-4 sm:flex-row sm:justify-between sm:gap-6">
-      <dt className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-400">
+      <dt className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted">
         {label}
       </dt>
       <dd className="text-sm text-ink-900 sm:text-right">{value}</dd>

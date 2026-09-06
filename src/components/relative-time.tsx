@@ -1,19 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
+import {
+  getClock,
+  getServerClock,
+  NO_CLOCK,
+  subscribeToClock,
+} from "@/lib/browser-store";
 import { shortDate, timeAgo } from "@/lib/utils";
 
 /**
  * Data de publicação de uma manchete.
  *
- * A página do Radar é cacheada (ISR de 30 min), então um texto relativo
- * calculado durante a renderização divergiria do que o navegador calcula ao
- * hidratar — erro de hidratação garantido, e o React descarta a árvore.
+ * A página do Radar é cacheada (ISR de 30 min). Um texto relativo calculado
+ * durante a renderização divergiria do que o navegador calcula ao hidratar —
+ * e o React descartaria a árvore por divergência de hidratação.
  *
- * Solução: o primeiro render (servidor e cliente) usa a data absoluta, que é
- * idêntica dos dois lados; só depois da hidratação trocamos para o relativo,
- * que é mais legível. O atributo dateTime nunca muda.
+ * Então: no servidor e durante a hidratação vale o snapshot do servidor, que
+ * não tem relógio e rende a data absoluta — idêntica dos dois lados. Depois da
+ * hidratação entra o relógio compartilhado e o texto vira "há 2 h",
+ * atualizando-se sozinho a cada minuto. O atributo dateTime nunca muda.
  */
 export function RelativeTime({
   iso,
@@ -22,15 +29,15 @@ export function RelativeTime({
   iso: string;
   className?: string;
 }) {
-  const [label, setLabel] = useState(() => shortDate(iso));
-
-  useEffect(() => {
-    setLabel(timeAgo(iso));
-  }, [iso]);
+  const now = useSyncExternalStore(
+    subscribeToClock,
+    getClock,
+    getServerClock,
+  );
 
   return (
     <time dateTime={iso} className={className}>
-      {label}
+      {now === NO_CLOCK ? shortDate(iso) : timeAgo(iso, now)}
     </time>
   );
 }

@@ -28,7 +28,7 @@ export default function TransactionsPage() {
         }
         lede="Navegue pelas empresas que assessoramos, filtre por setor ou por tipo de mandato e abra a ficha da transação para ver como o negócio foi estruturado."
         meta={
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-sand-500">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-muted-invert">
             <span>{transactions.length} operações</span>
             <span aria-hidden>·</span>
             <span>{sectors.length} setores</span>
